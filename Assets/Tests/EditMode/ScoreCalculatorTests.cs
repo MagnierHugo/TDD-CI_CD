@@ -15,7 +15,7 @@ public class ScoreCalculatorTests
     [Test]
     public void Calculate_WithZeroKills_ReturnsZero()
     {
-
+        Assert.AreEqual(0, _scoreCalculator.Calculate());
     }
 
     [Test]

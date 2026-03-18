@@ -23,7 +23,7 @@ public class EnemyTests
     }
 
     [Test]
-    public void GetReward_WhenAlreadyDead_ReturnsZero()
+    public void GetReward_WhenAlreadyClaimed_ReturnsZero() // GetReward_WhenAlreadyDead_ReturnsZero
     {
         int damage = 100;
         _enemy.TakeDamage(damage);
