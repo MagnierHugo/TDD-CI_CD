@@ -68,7 +68,9 @@ public class PlayerTests
     [Test]
     public void IsAlive_WhenHealthIsZero_ReturnsFalse()
     {
-        _player.TakeDamage(100);
+        int damage = 100;
+
+        _player.TakeDamage(damage);
 
         Assert.IsFalse(_player.IsAlive, "IsAlive isn't false when health is 0");
     }
