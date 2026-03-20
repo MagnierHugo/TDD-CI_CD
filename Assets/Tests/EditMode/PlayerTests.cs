@@ -20,7 +20,7 @@ public class PlayerTests
 
         _player.TakeDamage(damage);
 
-        Assert.AreEqual(80, _player.Health);
+        Assert.AreEqual(80, _player.Health, "Player TakeDamage doesn't reduce health");
     }
 
     [Test]
@@ -30,9 +30,9 @@ public class PlayerTests
 
         _player.TakeDamage(damage);
 
-        Assert.AreEqual(0, _player.Health);
+        Assert.AreEqual(0, _player.Health, "Player TakeDamage doesn't set health to 0 when taking fatal damage");
     }
-
+    
     [Test]
     public void TakeDamage_WithNegativeAmount_DoesNotChangeHealth()
     {
@@ -40,7 +40,7 @@ public class PlayerTests
 
         _player.TakeDamage(damage);
 
-        Assert.AreEqual(100, _player.Health);
+        Assert.AreEqual(100, _player.Health, "Player TakeDamage changes health when taking negative amount of damage");
     }
 
     [Test]
@@ -52,7 +52,7 @@ public class PlayerTests
 
         _player.Heal(heal);
 
-        Assert.AreEqual(70, _player.Health);
+        Assert.AreEqual(70, _player.Health, "Heal doesn't increase health when below 100");
     }
 
     [Test]
@@ -62,7 +62,7 @@ public class PlayerTests
 
         _player.Heal(heal);
 
-        Assert.AreEqual(100, _player.Health);
+        Assert.AreEqual(100, _player.Health, "Heal exceeds 100 hp");
     }
 
     [Test]
@@ -70,7 +70,7 @@ public class PlayerTests
     {
         _player.TakeDamage(100);
 
-        Assert.IsFalse(_player.IsAlive);
+        Assert.IsFalse(_player.IsAlive, "IsAlive isn't false when health is 0");
     }
 
     [Test]
@@ -80,7 +80,7 @@ public class PlayerTests
         _player.LoseLife();
         _player.LoseLife();
 
-        Assert.IsFalse(_player.IsAlive);
+        Assert.IsFalse(_player.IsAlive, "IsAlive doesn't return false when losing the last life");
     }
 
 }

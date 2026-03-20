@@ -19,7 +19,7 @@ public class EnemyTests
 
         _enemy.TakeDamage(damage);
 
-        Assert.IsFalse(_enemy.IsAlive());
+        Assert.IsFalse(_enemy.IsAlive, "Enemy IsAlive isn't false after taking fatal damage");
     }
 
     [Test]
@@ -30,6 +30,6 @@ public class EnemyTests
 
         int _ = _enemy.GetReward();
 
-        Assert.AreEqual(0, _enemy.GetReward());
+        Assert.AreEqual(0, _enemy.GetReward(), "GetReward doesn't return 0 after already being claimed");
     }
 }
