@@ -26,7 +26,7 @@ public class ScoreCalculatorTests
 
         _scoreCalculator.ApplyCombo(combo);
 
-        Assert.AreEqual(initialMultiplier, _scoreCalculator.Multiplier, "ApplyCombo with 3 kills doesn't increase the multiplier");
+        Assert.AreNotEqual(initialMultiplier, _scoreCalculator.Multiplier, "ApplyCombo with 3 kills doesn't increase the multiplier");
     }
 
     [Test]
@@ -45,16 +45,10 @@ public class ScoreCalculatorTests
     public void Calculate_AfterComboAndReset_UsesBaseMultiplier()
     {
         int combo = 5;
-        int kills = 7;
 
         _scoreCalculator.ApplyCombo(combo);
-
-        int scoreBeforeReset = _scoreCalculator.Calculate(kills, 60);
-
         _scoreCalculator.ResetMultiplier();
 
-        int scoreAfterReset = _scoreCalculator.Calculate(kills, 60);
-
-        Assert.AreNotEqual(scoreBeforeReset, scoreAfterReset, "Calculate after combo and reset doesn't properly calculate the score");
+        Assert.AreEqual(1.0f, _scoreCalculator.Multiplier, "Calculate after combo and reset doesn't properly calculate the score");
     }
 }

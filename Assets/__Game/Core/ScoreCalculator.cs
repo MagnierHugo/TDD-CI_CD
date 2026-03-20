@@ -8,12 +8,12 @@ namespace SpaceDefender.Core
 
     public class ScoreCalculator
     {
-        public int BaseScore;
-        public float Multiplier;
+        public int BaseScore { get; private set; } = 0;
+        public float Multiplier { get; private set; } = 1.0f;
 
-        public int Calculate(int kills, int time) { throw new NotImplementedException(); }
-        public void ApplyCombo(int comboCount) { throw new NotImplementedException(); }
-        public void ResetMultiplier() { throw new NotImplementedException(); }
+        public int Calculate(int kills, int time) => (int)(kills * BaseScore * Multiplier);
+        public void ApplyCombo(int comboCount) => Multiplier = comboCount > 1 ? comboCount - 1 : 1.0f;
+        public void ResetMultiplier() => Multiplier = 1.0f;
     }
 
 }
